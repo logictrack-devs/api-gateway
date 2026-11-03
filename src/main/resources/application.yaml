@@ -1,8 +1,6 @@
-
 spring:
   application:
     name: api-gateway
-  main:
-     allow-bean-definition-overriding: true
   config:
-     import: "configserver:${CONFIG_SERVER_URL:http://localhost:8888}"
+    import: "configserver:${CONFIG_SERVER_URL:http://localhost:8888}"
+
