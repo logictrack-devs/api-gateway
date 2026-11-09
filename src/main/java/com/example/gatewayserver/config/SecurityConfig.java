@@ -40,6 +40,8 @@ public class SecurityConfig {
         return http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(ex -> ex
+                        // Permitir las peticiones preflight de CORS
+                        .pathMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .pathMatchers("/applications/apisecurity/api/auth/**").permitAll()
                         .pathMatchers("/actuator/health", "/actuator/gateway/routes").permitAll()
                         .pathMatchers("/applications/apisecurity/api/admin/**").hasRole("ADMIN")
